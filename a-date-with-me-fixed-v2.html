@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Date With Me ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --burgundy:#ff4fa3;
+  --wine:#190710;
+  --deep:#050505;
+  --cream:#fff7fb;
+  --cream-dark:#ffd6e8;
+  --gold:#ff4fa3;
+  --gold-light:#ff9ac8;
+  --muted:#c8aebc;
+  --border:rgba(255,79,163,.28)
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--deep);
+  color:var(--cream);
+  font-family:"DM Sans",sans-serif;
+  min-height:100vh;
+  overflow-x:hidden
+}
+
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.04;
+  z-index:100;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
+}
+
+.hidden{display:none!important}
+
+.opening{
+  min-height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+  background:
+    linear-gradient(rgba(20,5,10,.52),rgba(20,5,10,.9)),
+    url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2000&q=85")
+    center/cover
+}
+
+.opening:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at center,transparent 10%,rgba(12,2,6,.65) 100%)
+}
+
+.opening-content{
+  position:relative;
+  z-index:2;
+  width:min(850px,90%);
+  animation:up 1.2s ease both
+}
+
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.3em;
+  font-size:.7rem;
+  color:var(--gold-light);
+  margin-bottom:25px
+}
+
+.opening h1{
+  font:500 clamp(3.8rem,9vw,8rem)/.85 "Cormorant Garamond",serif;
+  margin-bottom:35px
+}
+
+.opening-copy{
+  font:clamp(1.45rem,3vw,2.25rem)/1.3 "Cormorant Garamond",serif;
+  color:var(--cream-dark);
+  max-width:700px;
+  margin:auto
+}
+
+.opening-copy span{
+  display:block;
+  margin-top:14px;
+  opacity:0;
+  animation:fade 1s ease forwards
+}
+
+.opening-copy span:nth-child(1){animation-delay:.5s}
+.opening-copy span:nth-child(2){animation-delay:1.4s}
+.opening-copy span:nth-child(3){animation-delay:2.3s}
+
+.opening-small{
+  margin-top:40px;
+  color:var(--muted);
+  font-size:.85rem
+}
+
+.cta{
+  border:1px solid var(--gold);
+  background:linear-gradient(135deg,#b89052,#d8bc82);
+  color:#28110f;
+  padding:16px 30px;
+  border-radius:999px;
+  font-weight:600;
+  margin-top:30px;
+  box-shadow:0 10px 35px rgba(201,166,107,.18);
+  transition:.3s
+}
+
+.cta:hover{transform:translateY(-3px)}
+
+.pressure-free{
+  display:block;
+  margin-top:15px;
+  color:#fffaf488;
+  font-size:.75rem
+}
+
+.app{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 20% 0%,rgba(106,29,51,.35),transparent 35%),
+    radial-gradient(circle at 100% 30%,rgba(126,77,51,.12),transparent 30%),
+    var(--deep)
+}
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:50;
+  backdrop-filter:blur(20px);
+  background:#16070cd1;
+  border-bottom:1px solid #ffffff0f
+}
+
+.topbar-inner{
+  max-width:1150px;
+  margin:auto;
+  padding:16px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px
+}
+
+.logo{
+  font:1.45rem "Cormorant Garamond",serif
+}
+
+.logo span{color:var(--gold)}
+
+.progress{
+  display:flex;
+  gap:6px;
+  align-items:center
+}
+
+.progress-item{
+  font-size:.62rem;
+  letter-spacing:.12em;
+  color:#77686a
+}
+
+.progress-item.active{color:var(--gold-light)}
+
+.progress-line{
+  width:22px;
+  height:1px;
+  background:#453237
+}
+
+.chapter{
+  max-width:1000px;
+  margin:auto;
+  padding:100px 24px 130px;
+  min-height:calc(100vh - 75px)
+}
+
+.chapter-heading{
+  max-width:700px;
+  margin-bottom:55px
+}
+
+.chapter-number{
+  color:var(--gold);
+  font-size:.7rem;
+  letter-spacing:.25em;
+  margin-bottom:18px
+}
+
+.chapter h2{
+  font:500 clamp(3rem,7vw,5.8rem)/.95 "Cormorant Garamond",serif;
+  margin-bottom:25px
+}
+
+.chapter-description{
+  color:var(--muted);
+  font-size:1rem;
+  line-height:1.8;
+  max-width:600px
+}
+
+.welcome{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center
+}
+
+.welcome-inner{max-width:700px}
+
+.welcome h2{
+  font:500 clamp(4rem,10vw,7rem) "Cormorant Garamond",serif
+}
+
+.welcome p{
+  color:var(--muted);
+  font-size:1.1rem;
+  line-height:1.9;
+  margin:20px auto;
+  max-width:600px
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px
+}
+
+.card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:#ffffff09;
+  border-radius:4px;
+  transition:.4s
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:#e5c9938c
+}
+
+.card.selected{
+  border-color:var(--gold);
+  box-shadow:0 0 0 1px var(--gold),0 20px 50px #0004
+}
+
+.card-image{
+  height:220px;
+  width:100%;
+  object-fit:cover;
+  display:block;
+  filter:saturate(.8);
+  transition:.5s
+}
+
+.card:hover .card-image{transform:scale(1.035)}
+
+.card-content{padding:24px}
+
+.card h3{
+  font:1.7rem "Cormorant Garamond",serif;
+  margin-bottom:8px
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.6;
+  font-size:.88rem
+}
+
+.card-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:18px
+}
+
+.tag{
+  border:1px solid #e5c99333;
+  color:var(--gold-light);
+  padding:5px 9px;
+  font-size:.65rem
+}
+
+.selected-mark{
+  position:absolute;
+  right:15px;
+  top:15px;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:var(--gold);
+  color:var(--wine);
+  display:grid;
+  place-items:center;
+  font-weight:bold;
+  opacity:0;
+  transition:.3s
+}
+
+.card.selected .selected-mark{opacity:1}
+
+.choice-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px
+}
+
+.choice{
+  padding:28px;
+  min-height:160px;
+  border:1px solid var(--border);
+  background:#ffffff06;
+  transition:.35s
+}
+
+.choice:hover{
+  background:#ffffff0e;
+  transform:translateY(-3px)
+}
+
+.choice.selected{
+  border-color:var(--gold);
+  background:#c9a66b14
+}
+
+.choice-icon{
+  font-size:1.3rem;
+  margin-bottom:15px
+}
+
+.choice h3{
+  font:1.7rem "Cormorant Garamond",serif;
+  margin-bottom:7px
+}
+
+.choice p{
+  color:var(--muted);
+  line-height:1.6;
+  font-size:.86rem
+}
+
+.date-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:8px;
+  margin-bottom:35px
+}
+
+.date{
+  min-height:90px;
+  border:1px solid var(--border);
+  background:#ffffff06;
+  color:var(--cream);
+  padding:12px 5px;
+  text-align:center;
+  transition:.3s
+}
+
+.date:hover{border-color:var(--gold)}
+
+.date.selected{
+  background:var(--gold);
+  color:var(--wine);
+  border-color:var(--gold)
+}
+
+.date .day{
+  font-size:.65rem;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  opacity:.65
+}
+
+.date .number{
+  font:2rem "Cormorant Garamond",serif;
+  margin-top:5px
+}
+
+.date .month{
+  font-size:.65rem;
+  opacity:.65
+}
+
+.time-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px
+}
+
+.time{
+  padding:17px;
+  border:1px solid var(--border);
+  text-align:center;
+  color:var(--cream);
+  background:#ffffff06;
+  transition:.3s
+}
+
+.time:hover,.time.selected{
+  border-color:var(--gold);
+  background:#c9a66b1a;
+  color:var(--gold-light)
+}
+
+.form-group{margin-bottom:25px}
+
+label{
+  display:block;
+  color:var(--cream-dark);
+  font-size:.82rem;
+  margin-bottom:9px
+}
+
+input,textarea{
+  width:100%;
+  border:1px solid var(--border);
+  background:#ffffff09;
+  color:var(--cream);
+  padding:16px;
+  outline:0;
+  transition:.3s
+}
+
+input:focus,textarea:focus{border-color:var(--gold)}
+
+textarea{
+  min-height:150px;
+  resize:vertical
+}
+
+.navigation{
+  margin-top:55px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px
+}
+
+.nav-btn{
+  padding:13px 25px;
+  border:1px solid var(--border);
+  background:transparent;
+  color:var(--cream);
+  transition:.3s
+}
+
+.nav-btn:hover{border-color:var(--gold)}
+
+.nav-btn.primary{
+  background:var(--gold);
+  color:var(--wine);
+  border-color:var(--gold)
+}
+
+.confirmation{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:80px 24px;
+  text-align:center
+}
+
+.confirmation-box{max-width:750px}
+
+.confirmation-heart{
+  font-size:2rem;
+  margin-bottom:25px;
+  color:var(--gold)
+}
+
+.confirmation h2{
+  font:500 clamp(4rem,9vw,7rem)/.9 "Cormorant Garamond",serif;
+  margin-bottom:25px
+}
+
+.confirmation p{
+  color:var(--muted);
+  line-height:1.8
+}
+
+.summary{
+  margin:45px auto;
+  max-width:600px;
+  text-align:left;
+  border-top:1px solid var(--border)
+}
+
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:18px 0;
+  border-bottom:1px solid var(--border)
+}
+
+.summary-label{
+  color:var(--muted);
+  font-size:.8rem
+}
+
+.summary-value{text-align:right}
+
+.status{
+  margin-top:25px;
+  font-size:.85rem;
+  color:var(--gold-light)
+}
+
+.music-control{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:80;
+  border:1px solid var(--border);
+  background:#16070ce0;
+  backdrop-filter:blur(15px);
+  color:var(--cream);
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:.75rem
+}
+
+@keyframes up{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:none}
+}
+
+@keyframes fade{
+  to{opacity:1;transform:none}
+}
+
+.fade-in{animation:up .65s ease both}
+
+@media(max-width:800px){
+  .progress{display:none}
+  .chapter{padding:70px 18px 100px}
+  .grid,.choice-grid{grid-template-columns:1fr}
+  .date-grid{grid-template-columns:repeat(4,1fr)}
+  .time-grid{grid-template-columns:repeat(2,1fr)}
+  .navigation{
+    position:sticky;
+    bottom:10px;
+    padding:10px;
+    background:#16070cd9;
+    backdrop-filter:blur(15px);
+    z-index:30
+  }
+  .opening h1{font-size:4rem}
+}
+
+@media(max-width:450px){
+  .date-grid{grid-template-columns:repeat(3,1fr)}
+  .card-image{height:190px}
+  .topbar-inner{padding:13px 15px}
+}
+</style>
+</head>
+
+<body>
+
+<section class="opening" id="opening">
+  <div class="opening-content">
+    <div class="eyebrow">A private invitation</div>
+
+    <h1>For <span id="openingName">Her</span> ❤️</h1>
+
+    <div class="opening-copy">
+      <span>I could have simply asked you out, Bu Sie…</span>
+      <span>…but I thought you deserved a little say in how our time together unfolds.</span>
+      <span>So I made something just for you.</span>
+    </div>
+
+    <div class="opening-small">
+      A private invitation from <strong id="openingFrom">Me</strong>
+    </div>
+
+    <button class="cta" onclick="openInvitation()">
+      Open Your Invitation ✨
+    </button>
+
+    <span class="pressure-free">
+      Take your time. There’s no pressure.
+    </span>
+  </div>
+</section>
+
+
+<main class="app hidden" id="app">
+
+<header class="topbar">
+  <div class="topbar-inner">
+
+    <div class="logo">
+      A Date With <span>Me</span>
+    </div>
+
+    <div class="progress">
+      <span class="progress-item active">01 DATE</span>
+      <span class="progress-line"></span>
+
+      <span class="progress-item">02 MOOD</span>
+      <span class="progress-line"></span>
+
+      <span class="progress-item">03 PLACE</span>
+      <span class="progress-line"></span>
+
+      <span class="progress-item">04 STAY</span>
+      <span class="progress-line"></span>
+
+      <span class="progress-item">05 DETAILS</span>
+      <span class="progress-line"></span>
+
+      <span class="progress-item">06 US</span>
+    </div>
+
+  </div>
+</header>
+
+
+<section class="welcome chapter-screen" id="screen-welcome">
+
+  <div class="welcome-inner fade-in">
+
+    <div class="chapter-number">
+      A LITTLE SOMETHING FOR YOU
+    </div>
+
+    <h2>
+      Hey, <span class="her-name">Her</span>. ❤️
+    </h2>
+
+    <p>
+      I want to take you somewhere nice.
+    </p>
+
+    <p>
+      Somewhere we can eat, talk, laugh, relax and hopefully create a memory worth keeping.
+    </p>
+
+    <p>
+      But instead of deciding everything for you, I thought I'd let you choose what feels right.
+    </p>
+
+    <button class="cta" onclick="goTo(1)">
+      Let's Plan Our Date
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- 01 DATE -->
+
+<section class="chapter chapter-screen hidden" id="screen-1">
+
+  <div class="chapter-heading">
+
+    <div class="chapter-number">01 / DATE</div>
+
+    <h2>
+      When do I get to steal you away?
+    </h2>
+
+    <p class="chapter-description">
+      Choose whatever works best for you. I can work around your schedule.
+    </p>
+
+  </div>
+
+
+  <div class="date-grid" id="dateGrid"></div>
+
+
+  <h3 style="font-family:Cormorant Garamond;font-size:2rem;margin:45px 0 20px">
+    Lunch or dinner?
+  </h3>
+
+  <div class="choice-grid" id="mealGrid">
+
+    <div class="choice" data-value="Lunch">
+      <div class="choice-icon">☀️</div>
+      <h3>Lunch</h3>
+      <p>A relaxed afternoon together.</p>
+    </div>
+
+    <div class="choice" data-value="Dinner">
+      <div class="choice-icon">🌙</div>
+      <h3>Dinner</h3>
+      <p>An evening together.</p>
+    </div>
+
+  </div>
+
+
+  <h3 style="font-family:Cormorant Garamond;font-size:2rem;margin:45px 0 20px">
+    And what time feels good?
+  </h3>
+
+  <div class="time-grid" id="timeGrid"></div>
+
+
+  <h3 style="font-family:Cormorant Garamond;font-size:2rem;margin:45px 0 20px">
+    How much time do you have?
+  </h3>
+
+  <div class="choice-grid" id="durationGrid">
+
+    <div class="choice" data-value="A quick date">
+      <div class="choice-icon">🌙</div>
+      <h3>A quick date</h3>
+      <p>2–3 hours</p>
+    </div>
+
+    <div class="choice" data-value="A proper date">
+      <div class="choice-icon">🥂</div>
+      <h3>A proper date</h3>
+      <p>3–5 hours</p>
+    </div>
+
+    <div class="choice" data-value="Take your time">
+      <div class="choice-icon">✨</div>
+      <h3>Take your time</h3>
+      <p>5+ hours</p>
+    </div>
+
+    <div class="choice" data-value="I'm free all day">
+      <div class="choice-icon">🌌</div>
+      <h3>I'm free all day</h3>
+      <p>Let's see where the day takes us.</p>
+    </div>
+
+  </div>
+
+
+  <div class="navigation">
+
+    <button class="nav-btn" onclick="goTo(0)">
+      ← Back
+    </button>
+
+    <button class="nav-btn primary" onclick="goTo(2)">
+      Continue →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- 02 MOOD -->
+
+<section class="chapter chapter-screen hidden" id="screen-2">
+
+  <div class="chapter-heading">
+
+    <div class="chapter-number">02 / MOOD</div>
+
+    <h2>
+      What kind of date are you in the mood for?
+    </h2>
+
+    <p class="chapter-description">
+      There’s no wrong answer.
+    </p>
+
+  </div>
+
+
+  <div class="choice-grid" id="moodGrid">
+
+    <div class="choice" data-value="Intimate & Romantic">
+      <div class="choice-icon">🌹</div>
+      <h3>Intimate & Romantic</h3>
+      <p>Soft atmosphere. Good food. Long conversations.</p>
+    </div>
+
+    <div class="choice" data-value="Dress Up & City Lights">
+      <div class="choice-icon">🌃</div>
+      <h3>Dress Up & City Lights</h3>
+      <p>Something elegant. Something memorable.</p>
+    </div>
+
+    <div class="choice" data-value="Quiet & Cozy">
+      <div class="choice-icon">🌿</div>
+      <h3>Quiet & Cozy</h3>
+      <p>Comfortable surroundings and time to actually talk.</p>
+    </div>
+
+    <div class="choice" data-value="Food & Conversation">
+      <div class="choice-icon">🍽️</div>
+      <h3>Food & Conversation</h3>
+      <p>Come hungry. Stay for the conversation.</p>
+    </div>
+
+    <div class="choice" data-value="A Little Adventure">
+      <div class="choice-icon">🌙</div>
+      <h3>A Little Adventure</h3>
+      <p>Let's make the day or evening interesting.</p>
+    </div>
+
+    <div class="choice" data-value="Surprise Me">
+      <div class="choice-icon">✨</div>
+      <h3>Surprise Me</h3>
+      <p>You choose the date. I trust you.</p>
+    </div>
+
+  </div>
+
+
+  <div class="navigation">
+
+    <button class="nav-btn" onclick="goTo(1)">
+      ← Back
+    </button>
+
+    <button class="nav-btn primary" onclick="goTo(3)">
+      Continue →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- 03 PLACE -->
+
+<section class="chapter chapter-screen hidden" id="screen-3">
+
+  <div class="chapter-heading">
+
+    <div class="chapter-number">03 / PLACE</div>
+
+    <h2>
+      Where should I take you?
+    </h2>
+
+    <p class="chapter-description">
+      Pick somewhere that makes you curious.
+    </p>
+
+  </div>
+
+
+  <div class="grid" id="restaurantGrid"></div>
+
+
+  <div class="navigation">
+
+    <button class="nav-btn" onclick="goTo(2)">
+      ← Back
+    </button>
+
+    <button class="nav-btn primary" onclick="goTo(4)">
+      Continue →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- 04 STAY -->
+
+<section class="chapter chapter-screen hidden" id="screen-4">
+
+  <div class="chapter-heading">
+
+    <div class="chapter-number">04 / STAY</div>
+
+    <h2>
+      How should the date end?
+    </h2>
+
+    <p class="chapter-description">
+      Completely your choice. Comfort first, always.
+    </p>
+
+  </div>
+
+
+  <div class="choice-grid" id="stayGrid">
+
+    <div class="choice" data-value="I'll head home">
+      <div class="choice-icon">🏡</div>
+      <h3>I'll head home</h3>
+      <p>I'll make sure you get home comfortably.</p>
+    </div>
+
+    <div class="choice" data-value="Keep the date going">
+      <div class="choice-icon">🌙</div>
+      <h3>Keep the date going</h3>
+      <p>Let's see where the day or night takes us.</p>
+    </div>
+
+    <div class="choice" data-value="I'll decide later">
+      <div class="choice-icon">✨</div>
+      <h3>I'll decide later</h3>
+      <p>We'll play it by ear.</p>
+    </div>
+
+  </div>
+
+
+  <div class="navigation">
+
+    <button class="nav-btn" onclick="goTo(3)">
+      ← Back
+    </button>
+
+    <button class="nav-btn primary" onclick="goTo(5)">
+      Continue →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- 05 DETAILS -->
+
+<section class="chapter chapter-screen hidden" id="screen-5">
+
+  <div class="chapter-heading">
+
+    <div class="chapter-number">05 / DETAILS</div>
+
+    <h2>
+      Anything I should know?
+    </h2>
+
+    <p class="chapter-description">
+      Food preferences, allergies, little things you love, or anything that would make the date more comfortable.
+    </p>
+
+  </div>
+
+
+  <div class="form-group">
+
+    <label>
+      Anything you'd like me to know?
+    </label>
+
+    <textarea
+      id="notes"
+      placeholder="Tell me anything..."
+    ></textarea>
+
+  </div>
+
+
+  <div class="navigation">
+
+    <button class="nav-btn" onclick="goTo(4)">
+      ← Back
+    </button>
+
+    <button class="nav-btn primary" onclick="goTo(6)">
+      Almost There →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- 06 US -->
+
+<section class="chapter chapter-screen hidden" id="screen-6">
+
+  <div class="chapter-heading">
+
+    <div class="chapter-number">06 / US</div>
+
+    <h2>
+      One last thing.
+    </h2>
+
+    <p class="chapter-description">
+      What are you most looking forward to?
+    </p>
+
+  </div>
+
+
+  <div class="choice-grid" id="lookingGrid">
+
+    <div class="choice" data-value="The food">
+      <div class="choice-icon">🍽️</div>
+      <h3>The food</h3>
+      <p>Let's eat very well.</p>
+    </div>
+
+    <div class="choice" data-value="The conversation">
+      <div class="choice-icon">💬</div>
+      <h3>The conversation</h3>
+      <p>I'm looking forward to talking to you.</p>
+    </div>
+
+    <div class="choice" data-value="Getting dressed up">
+      <div class="choice-icon">✨</div>
+      <h3>Getting dressed up</h3>
+      <p>Let's make an occasion of it.</p>
+    </div>
+
+    <div class="choice" data-value="The surprise">
+      <div class="choice-icon">🌙</div>
+      <h3>The surprise</h3>
+      <p>I have no idea what you've planned.</p>
+    </div>
+
+    <div class="choice" data-value="Spending time together">
+      <div class="choice-icon">❤️</div>
+      <h3>Spending time together</h3>
+      <p>Honestly, that's the whole point.</p>
+    </div>
+
+  </div>
+
+
+  <div class="navigation">
+
+    <button class="nav-btn" onclick="goTo(5)">
+      ← Back
+    </button>
+
+    <button class="nav-btn primary" onclick="finishInvitation()">
+      Send My Choices ❤️
+    </button>
+
+  </div>
+
+</section>
+
+
+<section class="confirmation hidden" id="confirmation">
+
+  <div class="confirmation-box fade-in">
+
+    <div class="confirmation-heart">♡</div>
+
+    <div class="eyebrow">
+      Invitation received
+    </div>
+
+    <h2>
+      It's a date.
+    </h2>
+
+    <p>
+      Thank you for choosing how you'd like our time together to unfold.
+    </p>
+
+    <div class="summary" id="summary"></div>
+
+    <p>
+      I'll take it from here. Until then... I'm looking forward to seeing you.
+    </p>
+
+    <div class="status" id="submitStatus"></div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<button
+  class="music-control hidden"
+  id="musicButton"
+  onclick="toggleMusic()"
+>
+  ♪ Add a little atmosphere
+</button>
+
+<audio id="music" loop></audio>
+
+
+<script>
+
+/* =========================
+   EDIT THESE SETTINGS
+========================= */
+
+const CONFIG = {
+
+  herName: "Bu Sie",
+
+  myName: "Ave",
+
+  // Paste your deployed Google Apps Script /exec URL here:
+  submitEndpoint: "https://script.google.com/macros/s/AKfycbxlIjgOor4C-0XaQQGXy0BVjo9F_NWYq6UiD7Bq41O9h_A-V8njo25TqFy9ZnwMHxfM/exec",
+
+  invitationId: "BU-SIE-001",
+
+  /*
+    OCTOBER 2026
+    Every day from October 1 to October 31
+  */
+
+  availableDates: [
+    "2026-10-01",
+    "2026-10-02",
+    "2026-10-03",
+    "2026-10-04",
+    "2026-10-05",
+    "2026-10-06",
+    "2026-10-07",
+    "2026-10-08",
+    "2026-10-09",
+    "2026-10-10",
+    "2026-10-11",
+    "2026-10-12",
+    "2026-10-13",
+    "2026-10-14",
+    "2026-10-15",
+    "2026-10-16",
+    "2026-10-17",
+    "2026-10-18",
+    "2026-10-19",
+    "2026-10-20",
+    "2026-10-21",
+    "2026-10-22",
+    "2026-10-23",
+    "2026-10-24",
+    "2026-10-25",
+    "2026-10-26",
+    "2026-10-27",
+    "2026-10-28",
+    "2026-10-29",
+    "2026-10-30",
+    "2026-10-31"
+  ],
+
+  /*
+    Available times:
+    13:00 through 22:00
+  */
+
+  times: [
+    "13:00",
+    "14:00",
+    "15:00",
+    "16:00",
+    "17:00",
+    "18:00",
+    "19:00",
+    "20:00",
+    "21:00",
+    "22:00"
+  ],
+
+  restaurants: [
+
+    {
+      name:"Mount Crest Guest House",
+      cuisine:"Guest House",
+      description:"A beautiful setting to start the date together.",
+      location:"Lesotho",
+      price:"♥",
+      atmosphere:"Elegant",
+      image:"assets/mount-crest.jpg"
+    },
+
+    {
+      name:"Shoeshoe Guest House",
+      cuisine:"Guest House",
+      description:"A welcoming choice for food, conversation and time together.",
+      location:"Lesotho",
+      price:"♥",
+      atmosphere:"Warm",
+      image:"assets/shoeshoe.jpg"
+    },
+
+    {
+      name:"Tshabi Guest House",
+      cuisine:"Guest House",
+      description:"A relaxed setting for good food and a beautiful date together.",
+      location:"Lesotho",
+      price:"♥",
+      atmosphere:"Cozy",
+      image:"assets/tshabi.jpg"
+    },
+
+    {
+      name:"El Paso Guest House",
+      cuisine:"Guest House",
+      description:"A distinctive choice for a date we can remember.",
+      location:"Lesotho",
+      price:"♥",
+      atmosphere:"Memorable",
+      image:"assets/el-paso.jpg"
+    }
+
+  ]
+
+};
+
+
+/* =========================
+   STATE
+========================= */
+
+let state = JSON.parse(localStorage.getItem("dateWithMe")) || {
+
+  date:"",
+  time:"",
+  meal:"",
+  duration:"",
+  mood:"",
+  restaurant:"",
+  stay:"",
+  notes:"",
+  lookingForwardTo:"",
+  submitted:false
+
+};
+
+
+const $ = id => document.getElementById(id);
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  $("openingName").textContent = CONFIG.herName;
+
+  $("openingFrom").textContent = CONFIG.myName;
+
+  document
+    .querySelectorAll(".her-name")
+    .forEach(e => e.textContent = CONFIG.herName);
+
+  buildDates();
+
+  buildTimes();
+
+  buildRestaurants();
+
+  setupChoices();
+
+  restoreState();
+
+});
+
+
+/* =========================
+   SAVE
+========================= */
+
+function save(){
+
+  localStorage.setItem(
+    "dateWithMe",
+    JSON.stringify(state)
+  );
+
+}
+
+
+/* =========================
+   OPEN INVITATION
+========================= */
+
+function openInvitation(){
+
+  $("opening").style.display = "none";
+
+  $("app").classList.remove("hidden");
+
+  goTo(0);
+
+  $("musicButton").classList.remove("hidden");
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function goTo(chapter){
+
+  saveForm();
+
+  document
+    .querySelectorAll(".chapter-screen")
+    .forEach(s => s.classList.add("hidden"));
+
+  $("confirmation").classList.add("hidden");
+
+  const id =
+    chapter === 0
+      ? "screen-welcome"
+      : `screen-${chapter}`;
+
+  const screen = $(id);
+
+  if(!screen) return;
+
+  screen.classList.remove("hidden");
+
+  screen.classList.remove("fade-in");
+
+  void screen.offsetWidth;
+
+  screen.classList.add("fade-in");
+
+  updateProgress(chapter);
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+function updateProgress(chapter){
+
+  document
+    .querySelectorAll(".progress-item")
+    .forEach((x,i) => {
+
+      x.classList.toggle(
+        "active",
+        i <= Math.max(0,chapter-1)
+      );
+
+    });
+
+}
+
+
+/* =========================
+   BUILD DATES
+========================= */
+
+function buildDates(){
+
+  const box = $("dateGrid");
+
+  box.innerHTML = "";
+
+  CONFIG.availableDates.forEach(ds => {
+
+    const d = new Date(ds + "T12:00:00");
+
+    const b = document.createElement("button");
+
+    b.className = "date";
+
+    b.dataset.value = ds;
+
+    b.innerHTML = `
+      <div class="day">
+        ${d.toLocaleDateString(undefined,{weekday:"short"})}
+      </div>
+
+      <div class="number">
+        ${d.getDate()}
+      </div>
+
+      <div class="month">
+        ${d.toLocaleDateString(undefined,{month:"short"})}
+      </div>
+    `;
+
+    b.onclick = () => {
+
+      document
+        .querySelectorAll(".date")
+        .forEach(x => x.classList.remove("selected"));
+
+      b.classList.add("selected");
+
+      state.date = ds;
+
+      save();
+
+    };
+
+    box.appendChild(b);
+
+  });
+
+}
+
+
+/* =========================
+   BUILD TIMES
+========================= */
+
+function buildTimes(){
+
+  const box = $("timeGrid");
+
+  box.innerHTML = "";
+
+  CONFIG.times.forEach(t => {
+
+    const b = document.createElement("button");
+
+    b.className = "time";
+
+    b.textContent = t;
+
+    b.onclick = () => {
+
+      document
+        .querySelectorAll(".time")
+        .forEach(x => x.classList.remove("selected"));
+
+      b.classList.add("selected");
+
+      state.time = t;
+
+      save();
+
+    };
+
+    box.appendChild(b);
+
+  });
+
+}
+
+
+/* =========================
+   BUILD RESTAURANTS
+========================= */
+
+function buildRestaurants(){
+
+  const box = $("restaurantGrid");
+
+  box.innerHTML = "";
+
+  CONFIG.restaurants.forEach(r => {
+
+    const card = document.createElement("div");
+
+    card.className = "card";
+
+    card.dataset.value = r.name;
+
+    card.innerHTML = `
+      <img
+        class="card-image"
+        src="${r.image}"
+        alt="${r.name}"
+      >
+
+      <div class="selected-mark">
+        ✓
+      </div>
+
+      <div class="card-content">
+
+        <h3>${r.name}</h3>
+
+        <p>${r.description}</p>
+
+        <div class="card-meta">
+
+          <span class="tag">${r.cuisine}</span>
+
+          <span class="tag">${r.location}</span>
+
+          <span class="tag">${r.price}</span>
+
+          <span class="tag">${r.atmosphere}</span>
+
+        </div>
+
+      </div>
+    `;
+
+    card.onclick = () => {
+
+      document
+        .querySelectorAll("#restaurantGrid .card")
+        .forEach(x => x.classList.remove("selected"));
+
+      card.classList.add("selected");
+
+      state.restaurant = r.name;
+
+      save();
+
+    };
+
+    box.appendChild(card);
+
+  });
+
+}
+
+
+/* =========================
+   CHOICES
+========================= */
+
+function setupChoices(){
+
+  [
+
+    ["mealGrid","meal"],
+
+    ["durationGrid","duration"],
+
+    ["moodGrid","mood"],
+
+    ["stayGrid","stay"],
+
+    ["lookingGrid","lookingForwardTo"]
+
+  ].forEach(([id,key]) => {
+
+    const box = $(id);
+
+    if(!box) return;
+
+    box
+      .querySelectorAll(".choice")
+      .forEach(c => {
+
+        c.onclick = () => {
+
+          box
+            .querySelectorAll(".choice")
+            .forEach(x =>
+              x.classList.remove("selected")
+            );
+
+          c.classList.add("selected");
+
+          state[key] = c.dataset.value;
+
+          save();
+
+        };
+
+      });
+
+  });
+
+}
+
+
+/* =========================
+   SAVE FORM
+========================= */
+
+function saveForm(){
+
+  if($("notes"))
+    state.notes = $("notes").value;
+
+  save();
+
+}
+
+
+/* =========================
+   RESTORE STATE
+========================= */
+
+function restoreState(){
+
+  if(state.date){
+
+    const e =
+      document.querySelector(
+        `.date[data-value="${CSS.escape(state.date)}"]`
+      );
+
+    if(e)
+      e.classList.add("selected");
+
+  }
+
+
+  if(state.time){
+
+    document
+      .querySelectorAll(".time")
+      .forEach(e => {
+
+        if(e.textContent === state.time)
+          e.classList.add("selected");
+
+      });
+
+  }
+
+
+  [
+
+    ["mealGrid",state.meal],
+
+    ["durationGrid",state.duration],
+
+    ["moodGrid",state.mood],
+
+    ["stayGrid",state.stay],
+
+    ["lookingGrid",state.lookingForwardTo]
+
+  ].forEach(([id,v]) => {
+
+    if(!v) return;
+
+    $(id)?.querySelectorAll("[data-value]")
+      .forEach(e => {
+
+        if(e.dataset.value === v)
+          e.classList.add("selected");
+
+      });
+
+  });
+
+
+  if(state.restaurant){
+
+    document
+      .querySelectorAll("#restaurantGrid .card")
+      .forEach(e => {
+
+        if(e.dataset.value === state.restaurant)
+          e.classList.add("selected");
+
+      });
+
+  }
+
+
+  if($("notes"))
+    $("notes").value = state.notes || "";
+
+}
+
+
+/* =========================
+   DATE FORMAT
+========================= */
+
+function formatDate(v){
+
+  if(!v)
+    return "Flexible";
+
+  return new Date(v + "T12:00:00")
+    .toLocaleDateString(
+      undefined,
+      {
+        weekday:"long",
+        month:"long",
+        day:"numeric"
+      }
+    );
+
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+function buildSummary(){
+
+  $("summary").innerHTML = [
+
+    ["DATE",formatDate(state.date)],
+
+    ["TIME",state.time || "Flexible"],
+
+    ["TYPE",state.meal || "We'll decide"],
+
+    ["MOOD",state.mood || "Surprise me"],
+
+    ["PLACE",state.restaurant || "I'll choose"],
+
+    ["STAY",state.stay || "We'll decide later"]
+
+  ]
+
+  .map(([a,b]) => `
+
+    <div class="summary-row">
+
+      <div class="summary-label">
+        ${a}
+      </div>
+
+      <div class="summary-value">
+        ${escapeHtml(b)}
+      </div>
+
+    </div>
+
+  `)
+  .join("");
+
+}
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHtml(s){
+
+  return String(s ?? "")
+    .replace(
+      /[&<>"']/g,
+      m => ({
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#039;"
+      }[m])
+    );
+
+}
+
+
+/* =========================
+   FINISH
+========================= */
+
+async function finishInvitation(){
+
+  saveForm();
+
+  buildSummary();
+
+  document
+    .querySelectorAll(".chapter-screen")
+    .forEach(s => s.classList.add("hidden"));
+
+  $("confirmation").classList.remove("hidden");
+
+  $("submitStatus").textContent =
+    "Sending your choices…";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+
+  const payload = {
+
+    invitationId:CONFIG.invitationId,
+
+    herName:CONFIG.herName,
+
+    myName:CONFIG.myName,
+
+    submittedAt:new Date().toISOString(),
+
+    date:state.date,
+
+    time:state.time,
+
+    meal:state.meal,
+
+    duration:state.duration,
+
+    mood:state.mood,
+
+    restaurant:state.restaurant,
+
+    stay:state.stay,
+
+    notes:state.notes,
+
+    lookingForwardTo:state.lookingForwardTo
+
+  };
+
+
+  try{
+
+    if(
+      !CONFIG.submitEndpoint ||
+      CONFIG.submitEndpoint.includes("PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE")
+    ){
+
+      throw new Error(
+        "Endpoint not configured"
+      );
+
+    }
+
+
+    await fetch(
+      CONFIG.submitEndpoint,
+      {
+        method:"POST",
+        mode:"no-cors",
+        headers:{
+          "Content-Type":
+            "text/plain;charset=utf-8"
+        },
+        body:JSON.stringify(payload)
+      }
+    );
+
+
+    state.submitted = true;
+
+    save();
+
+    $("submitStatus").textContent =
+      "Your choices are safely on their way. ❤️";
+
+  }
+
+  catch(err){
+
+    console.error(err);
+
+    $("submitStatus").textContent =
+      "Your choices are saved here. Please let me know if you'd like to try sending them again.";
+
+  }
+
+}
+
+
+/* =========================
+   MUSIC
+========================= */
+
+let musicPlaying = false;
+
+
+function toggleMusic(){
+
+  const music = $("music");
+
+  const button = $("musicButton");
+
+
+  if(!music.src){
+
+    alert(
+      "Add your music URL to the <audio> element first."
+    );
+
+    return;
+
+  }
+
+
+  if(musicPlaying){
+
+    music.pause();
+
+    musicPlaying = false;
+
+    button.textContent =
+      "♪ Add a little atmosphere";
+
+  }
+
+  else{
+
+    music.play();
+
+    musicPlaying = true;
+
+    button.textContent =
+      "Ⅱ Pause atmosphere";
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
